@@ -7,9 +7,11 @@ require("dotenv").config()
 
 const connect = require("./config/db")
 
-const tshirtController = require("./controllers/tshirtController")
+const mensController = require("./controllers/ProductsController/mensController")
+const womensController = require("./controllers/ProductsController/Women-Controller")
 
-app.use("/tshirt" , tshirtController)
+app.use("/mens" , mensController)
+app.use("/womens" , womensController)
 const {register,login} = require("./controllers/userController");
 
 app.post("/register",register)
