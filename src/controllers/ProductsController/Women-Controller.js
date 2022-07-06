@@ -113,8 +113,8 @@ router.get("/sortasc",async(req,res)=>{
     // req. query. color2 === 'blue'
     try {
         
-        const mens= await Mens.find({category:req.query.category}).lean().exec();
-      return  res.status(201).send(mens)
+        const womens= await Womens.find({category:req.query.category}).lean().exec();
+      return  res.status(201).send(womens)
     } catch (error) {
         return res.status(500).send({error:error.message})
     }
