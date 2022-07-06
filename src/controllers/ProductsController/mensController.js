@@ -66,6 +66,7 @@ router.delete("/:id",async(req,res)=>{
 
 
 
+
 router.get("/sortasc",async(req,res)=>{
     try {
         const mens= await Mens.find().sort({price:1}).lean().exec();
@@ -87,6 +88,40 @@ router.get("/sortasc",async(req,res)=>{
         return res.status(500).send({error:error.message})
     }
  });
+
+
+ 
+ router.get("",async(req,res)=>{
+    
+    try {
+        if(req.query.category==undefined){
+
+            const mens= await Mens.find().lean().exec();
+            return  res.status(201).send(mens)
+        }
+     else{
+
+        const mens= await Mens.find({category:req.query.category}).lean().exec();
+        return  res.status(201).send(mens)
+     }
+    } catch (error) {
+        return res.status(500).send({error:error.message})
+    }
+ })
+
+
+
+
+  router.get("",async(req,res)=>{
+    // req. query. color2 === 'blue'
+    try {
+        
+        const mens= await Mens.find({category:req.query.category}).lean().exec();
+      return  res.status(201).send(mens)
+    } catch (error) {
+        return res.status(500).send({error:error.message})
+    }
+ })
 
 
 
